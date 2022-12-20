@@ -1,0 +1,24 @@
+apiVersion: scorecard.operatorframework.io/v1alpha3
+kind: Configuration
+metadata:
+  name: config
+stages:
+- parallel: true
+  tests:
+  - image: quay.io/operator-framework/scorecard-test-kuttl:v2.1
+    labels:
+      suite: kuttlsuite
+      test: kuttltest1
+    storage:
+      spec:
+        mountPath: {}
+  - image: docker.io/andreasgerstmayr/scorecard-test-kuttl:dev
+    labels:
+      suite: kuttlsuite
+      test: kuttltest1
+    storage:
+      spec:
+        mountPath: {}
+storage:
+  spec:
+    mountPath: {}
